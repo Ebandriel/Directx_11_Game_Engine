@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="StringConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringConverter.h" />
