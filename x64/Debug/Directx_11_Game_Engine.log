@@ -1,1 +1,6 @@
-﻿  Directx_11_Game_Engine.vcxproj -> C:\Users\MST\Source\Repos\Directx_11_Game_Engine\x64\Debug\Directx_11_Game_Engine.exe
+﻿  ErrorLogger.cpp
+  Source.cpp
+  StringConverter.cpp
+  Generating Code...
+  LINK : D:\Repos\Directx_11_Game_Engine\x64\Debug\Directx_11_Game_Engine.exe not found or not built by the last incremental link; performing full link
+  Directx_11_Game_Engine.vcxproj -> D:\Repos\Directx_11_Game_Engine\x64\Debug\Directx_11_Game_Engine.exe
