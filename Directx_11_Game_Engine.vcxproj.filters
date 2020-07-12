@@ -19,6 +19,12 @@
     <Filter Include="Source Files\Keyboard">
       <UniqueIdentifier>{7b4a3c40-e882-4270-8ac3-558219c41b86}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Mouse">
+      <UniqueIdentifier>{1f7b2c00-5585-48b5-adf7-2d598ba52f32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Mouse">
+      <UniqueIdentifier>{4970b4bc-99f0-404a-9088-606a41831a2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -40,10 +46,16 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard\KeyboardClass.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Keyboard</Filter>
     </ClCompile>
     <ClCompile Include="Keyboard\KeyboardEvent.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse\MouseClass.cpp">
+      <Filter>Source Files\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse\MouseEvent.cpp">
+      <Filter>Source Files\Mouse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,10 +75,16 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard\KeyboardClass.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Keyboard</Filter>
     </ClInclude>
     <ClInclude Include="Keyboard\KeyboardEvent.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse\MouseEvent.h">
+      <Filter>Header Files\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse\MouseClass.h">
+      <Filter>Header Files\Mouse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
