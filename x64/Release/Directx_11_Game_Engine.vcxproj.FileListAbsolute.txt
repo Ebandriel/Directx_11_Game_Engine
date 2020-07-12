@@ -1,2 +1,0 @@
-C:\Users\MST\source\repos\Directx_11_Game_Engine\x64\Release\Directx_11_Game_Engine.exe
-D:\Repos\Directx_11_Game_Engine\x64\Release\Directx_11_Game_Engine.exe

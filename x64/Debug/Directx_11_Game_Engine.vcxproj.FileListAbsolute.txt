@@ -1,4 +1,0 @@
-C:\Users\MST\source\repos\Directx_11_Game_Engine\x64\Debug\Directx_11_Game_Engine.exe
-C:\Users\MST\source\repos\Directx_11_Game_Engine\x64\Debug\Directx_11_Game_Engine.pdb
-D:\Repos\Directx_11_Game_Engine\x64\Debug\Directx_11_Game_Engine.exe
-D:\Repos\Directx_11_Game_Engine\x64\Debug\Directx_11_Game_Engine.pdb
