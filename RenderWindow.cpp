@@ -1,4 +1,4 @@
-#include "RenderWindow.h"
+#include "WindowContainer.h"
 
 bool RenderWindow::Initialize(HINSTANCE hInstance, std::string window_title, std::string window_class, int width, int height)
 {
@@ -78,11 +78,16 @@ RenderWindow::~RenderWindow()
 
 }
 
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+{
+	return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+
 void RenderWindow::RegisterWindowClass()
 {
 	WNDCLASSEX wc; //window class
 	wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC; // redraw flags vert/horiz from resize
-	wc.lpfnWndProc = DefWindowProc; // pointer to window proc function for message handling
+	wc.lpfnWndProc = WindowProc; // pointer to window proc function for message handling
 	wc.cbClsExtra = 0; //no of extra bytes allocated for window-class
 	wc.cbWndExtra = 0; //no of extra bytes allocated for window instance
 	wc.hInstance = this->hInstance; // passing instance handle

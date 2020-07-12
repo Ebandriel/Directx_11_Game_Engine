@@ -5,3 +5,8 @@ bool Engine::Initialize(HINSTANCE hInstance, std::string window_title, std::stri
     return this->render_window.Initialize(hInstance, window_title, window_class, width, height);
    
 }
+
+bool Engine::ProcessMessages()
+{
+    return this->render_window.ProcessMessages();
+}
