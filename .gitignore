@@ -30,7 +30,7 @@
 *.exe
 *.out
 *.app
-.vs/Directx_11_Game_Engine/v16/
-x64/Debug/
-.vs/Directx_11_Game_Engine/v16/.suo
-.vs/Directx_11_Game_Engine/v16/Browse.VC.db
+
+
+/.vs
+/x64
