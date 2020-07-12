@@ -10,3 +10,16 @@ bool Engine::ProcessMessages()
 {
     return this->render_window.ProcessMessages();
 }
+
+void Engine::Update()
+{
+    while (!keyboard.CharBufferIsEmpty())
+    {
+        unsigned char ch = keyboard.ReadChar();
+        std::string outmsg = "char: ";
+        outmsg += ch;
+        outmsg += "\n";
+        OutputDebugStringA(outmsg.c_str());
+    }
+
+}
