@@ -19,8 +19,13 @@ void Engine::Update()
     }
     while (!keyboard.KeyBufferIsEmpty())
     {
-		KeyboardEvent kbe = keyboard.ReadKey();
-		unsigned char keycode = kbe.GetKeyCode();
+        KeyboardEvent kbe = keyboard.ReadKey();
+        unsigned char keycode = kbe.GetKeyCode();
     }
+    while (!mouse.EventBufferIsEmoty())
+    {
+        MouseEvent me = mouse.ReadEvent();
+    }
+
 
 }
