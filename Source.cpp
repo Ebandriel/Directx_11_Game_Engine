@@ -7,7 +7,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_ int nCmdShow)
 {
 	Engine engine;
-	engine.Initialize(hInstance, "Title", "MyWindowClass", 800, 600);
+	engine.Initialise(hInstance, "Title", "MyWindowClass", 800, 600);
 	while (engine.ProcessMessages() == true)
 	{
 		engine.Update();

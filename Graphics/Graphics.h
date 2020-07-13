@@ -5,6 +5,7 @@ class Graphics
 {
 public:
 	bool Initialise(HWND hwnd, int width, int height);
+	void RenderFrame();
 protected:
 
 private:
