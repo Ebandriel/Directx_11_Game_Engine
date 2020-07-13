@@ -18,7 +18,7 @@ public:
 		WheelUp,
 		WheelDown,
 		Move,
-		RAW_Move,
+		RAW_MOVE,
 		Invalid
 
 	};
