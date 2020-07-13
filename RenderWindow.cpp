@@ -1,6 +1,6 @@
 #include "WindowContainer.h"
 
-bool RenderWindow::Initialize(WindowContainer* pWindowContainer, HINSTANCE hInstance, std::string window_title, std::string window_class, int width, int height)
+bool RenderWindow::Initialise(WindowContainer* pWindowContainer, HINSTANCE hInstance, std::string window_title, std::string window_class, int width, int height)
 {
 	this->hInstance = hInstance;
 	this->width = width;
@@ -66,6 +66,11 @@ bool RenderWindow::ProcessMessages()
 		}
 	}
 	return true;
+}
+
+HWND RenderWindow::GetHWND() const
+{
+	return this->handle;
 }
 
 RenderWindow::~RenderWindow()
