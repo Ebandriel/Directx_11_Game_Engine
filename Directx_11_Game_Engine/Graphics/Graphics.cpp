@@ -4,6 +4,7 @@ bool Graphics::Initialise(HWND hwnd, int width, int height)
 {
 	if (!InitialiseDirectX(hwnd, width, height))return false;
 	if (!InitialiseShaders())return false;
+	if (!InitialiseScene())return false;
 	return true;
 }
 
@@ -11,6 +12,14 @@ void Graphics::RenderFrame()
 {
 	float bgcolour[] = { 0.0f,0.0f,1.0f,1.0f };
 	this->deviceContext->ClearRenderTargetView(this->renderTargetView.Get(), bgcolour);
+	this->deviceContext->IASetInputLayout(this->vertexShader.GetInputLayout());
+	this->deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_POINTLIST);
+	this->deviceContext->VSSetShader(vertexShader.GetShader(), NULL, 0);
+	this->deviceContext->PSSetShader(pixelShader.GetShader(), NULL, 0);
+	UINT stride = sizeof(Vertex);
+	UINT offset = 0;
+	this->deviceContext->IASetVertexBuffers(0, 1, vertexBuffer.GetAddressOf(), &stride, &offset);
+	this->deviceContext->Draw(1, 0);
 	this->swapchain->Present(1, NULL);
 }
 
@@ -133,5 +142,34 @@ bool Graphics::InitialiseShaders()
 
 
 	return true;
+}
+
+bool Graphics::InitialiseScene()
+{
+	Vertex v[] =
+	{
+		Vertex(0.0f,0.0f),
+	};
+
+	D3D11_BUFFER_DESC vertexBufferDesc;
+	ZeroMemory(&vertexBufferDesc, sizeof(vertexBufferDesc));
+
+	vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	vertexBufferDesc.ByteWidth = sizeof(Vertex) * ARRAYSIZE(v);
+	vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	vertexBufferDesc.CPUAccessFlags = 0;
+	vertexBufferDesc.MiscFlags = 0;
+
+	D3D11_SUBRESOURCE_DATA vertexBufferData;
+	ZeroMemory(&vertexBufferData, sizeof(vertexBufferData));
+	vertexBufferData.pSysMem = v;
+
+	HRESULT hr = this->device->CreateBuffer(&vertexBufferDesc, &vertexBufferData, this->vertexBuffer.GetAddressOf());
+	if (FAILED(hr))
+	{
+		ErrorLogger::Log(hr, "Failed to create Vertex buffer.");
+		return false;
+	}
+	return false;
 }
 
