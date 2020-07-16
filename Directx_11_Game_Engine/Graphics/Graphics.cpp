@@ -115,12 +115,6 @@ bool Graphics::InitialiseShaders()
 
 	UINT numElements = ARRAYSIZE(layout);
 
-	HRESULT hr = this->device->CreateInputLayout(layout,numElements, vertexShader.GetBuffer()->GetBufferPointer(),vertexShader.GetBuffer()->GetBufferSize(),this->inputLayout.GetAddressOf());
-	if (FAILED(hr))
-	{
-		ErrorLogger::Log(hr, "failed to create input layout.");
-		return false;
-	}
 	return true;
 }
 
