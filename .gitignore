@@ -34,3 +34,9 @@
 
 /.vs
 /x64
+/Directx_11_Game_Engine/.vs/Directx_11_Game_Engine/v16
+/Directx_11_Game_Engine/Includes
+/Directx_11_Game_Engine/Release
+/Directx_11_Game_Engine/Debug
+/Directx_11_Game_Engine/x64/Debug
+/Directx_11_Game_Engine/x64/Release
