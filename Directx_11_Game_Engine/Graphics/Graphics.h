@@ -21,5 +21,6 @@ private:
 
 
 	VertexShader vertexShader;
+	PixelShader pixelShader;
 	
 };
