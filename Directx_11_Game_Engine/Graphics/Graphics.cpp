@@ -10,7 +10,7 @@ bool Graphics::Initialise(HWND hwnd, int width, int height)
 
 void Graphics::RenderFrame()
 {
-	float bgcolour[] = { 0.0f,0.0f,1.0f,1.0f };
+	float bgcolour[] = { 0.0f,0.0f,0.0f,1.0f };
 	this->deviceContext->ClearRenderTargetView(this->renderTargetView.Get(), bgcolour);
 	this->deviceContext->IASetInputLayout(this->vertexShader.GetInputLayout());
 	this->deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
@@ -130,7 +130,8 @@ bool Graphics::InitialiseShaders()
 
 	D3D11_INPUT_ELEMENT_DESC layout[] =
 	{
-		{"POSITION",0,DXGI_FORMAT::DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA,0 }
+		{"POSITION",0,DXGI_FORMAT::DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA,0 },
+		{"COLOUR" , 0, DXGI_FORMAT::DXGI_FORMAT_R32G32B32_FLOAT,0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA,0}
 	};
 
 	UINT numElements = ARRAYSIZE(layout);
@@ -148,10 +149,10 @@ bool Graphics::InitialiseScene()
 {
 	Vertex v[] =
 	{
-		Vertex(0.0f,-0.1f), // center point
-		Vertex(-0.1f,0.0f),//left
-		Vertex(0.1f,0.0f),//right
-		Vertex(0.0f,0.1f),//top
+		Vertex(-0.5f,-0.5f,1.0f,0.0f,0.0f), // bl
+		Vertex(-0.0f,0.5f,0.0f,1.0f,0.0f),//tm
+		Vertex(0.5f,-0.5f,0.0f,0.0f,1.0f),//br
+		
 	};
 
 	D3D11_BUFFER_DESC vertexBufferDesc;

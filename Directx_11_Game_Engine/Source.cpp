@@ -23,3 +23,4 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //OUTPUT MERGER - done
 
 //create vertex buffer and draw
+//draw done
