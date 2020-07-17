@@ -13,13 +13,13 @@ void Graphics::RenderFrame()
 	float bgcolour[] = { 0.0f,0.0f,1.0f,1.0f };
 	this->deviceContext->ClearRenderTargetView(this->renderTargetView.Get(), bgcolour);
 	this->deviceContext->IASetInputLayout(this->vertexShader.GetInputLayout());
-	this->deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_POINTLIST);
+	this->deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	this->deviceContext->VSSetShader(vertexShader.GetShader(), NULL, 0);
 	this->deviceContext->PSSetShader(pixelShader.GetShader(), NULL, 0);
 	UINT stride = sizeof(Vertex);
 	UINT offset = 0;
 	this->deviceContext->IASetVertexBuffers(0, 1, vertexBuffer.GetAddressOf(), &stride, &offset);
-	this->deviceContext->Draw(1, 0);
+	this->deviceContext->Draw(4, 0);
 	this->swapchain->Present(1, NULL);
 }
 
@@ -148,7 +148,10 @@ bool Graphics::InitialiseScene()
 {
 	Vertex v[] =
 	{
-		Vertex(0.0f,0.0f),
+		Vertex(0.0f,-0.1f), // center point
+		Vertex(-0.1f,0.0f),//left
+		Vertex(0.1f,0.0f),//right
+		Vertex(0.0f,0.1f),//top
 	};
 
 	D3D11_BUFFER_DESC vertexBufferDesc;
