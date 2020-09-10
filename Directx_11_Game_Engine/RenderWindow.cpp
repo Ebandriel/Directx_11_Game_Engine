@@ -1,6 +1,6 @@
 #include "WindowContainer.h"
 
-bool RenderWindow::Initialise(WindowContainer* pWindowContainer, HINSTANCE hInstance, std::string window_title, std::string window_class, int width, int height)
+bool RenderWindow::Initialise(WindowContainer* pWindowContainer, HINSTANCE hInstance, std::string window_title, std::string window_class, float width, float height)
 {
 	this->hInstance = hInstance;
 	this->width = width;

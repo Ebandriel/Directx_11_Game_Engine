@@ -1,6 +1,6 @@
 #include "Graphics.h"
 
-bool Graphics::Initialise(HWND hwnd, int width, int height)
+bool Graphics::Initialise(HWND hwnd, float width, float height)
 {
 	if (!InitialiseDirectX(hwnd, width, height))return false;
 	if (!InitialiseShaders())return false;
@@ -12,8 +12,11 @@ void Graphics::RenderFrame()
 {
 	float bgcolour[] = { 0.0f,0.0f,0.0f,1.0f };
 	this->deviceContext->ClearRenderTargetView(this->renderTargetView.Get(), bgcolour);
+
 	this->deviceContext->IASetInputLayout(this->vertexShader.GetInputLayout());
 	this->deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	this->deviceContext->RSSetState(this->rasterizerState.Get());
+
 	this->deviceContext->VSSetShader(vertexShader.GetShader(), NULL, 0);
 	this->deviceContext->PSSetShader(pixelShader.GetShader(), NULL, 0);
 	UINT stride = sizeof(Vertex);
@@ -23,7 +26,7 @@ void Graphics::RenderFrame()
 	this->swapchain->Present(1, NULL);
 }
 
-bool Graphics::InitialiseDirectX(HWND hwnd, int width, int height)
+bool Graphics::InitialiseDirectX(HWND hwnd, float width, float height)
 {
 	std::vector<AdapterData> adapters = AdapterReader::GetAdapters();
 	if (adapters.size() < 1)
@@ -101,7 +104,20 @@ bool Graphics::InitialiseDirectX(HWND hwnd, int width, int height)
 
 	//set viewport
 	this->deviceContext->RSSetViewports(1, &viewport);
-	
+
+	//create rasterizer state 
+	D3D11_RASTERIZER_DESC rasterizerDesc;
+	ZeroMemory(&rasterizerDesc, sizeof(D3D11_RASTERIZER_DESC));
+	rasterizerDesc.FillMode = D3D11_FILL_MODE::D3D11_FILL_SOLID;
+	rasterizerDesc.CullMode = D3D11_CULL_MODE::D3D11_CULL_BACK;
+	hr = this->device->CreateRasterizerState(&rasterizerDesc, this->rasterizerState.GetAddressOf());
+	if (FAILED(hr))
+	{
+		ErrorLogger::Log(hr, "Failed to create rasterizer state.");
+		return false;
+	}
+
+
 	return true;
 }
 

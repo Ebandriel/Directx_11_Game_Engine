@@ -123,14 +123,18 @@ LRESULT WindowContainer::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM 
 		if (GET_WHEEL_DELTA_WPARAM(wParam) > 0)
 		{
 			mouse.OnWheelUp(x, y);
+			return 0;
 		
 		}
 		else if (GET_WHEEL_DELTA_WPARAM(wParam) < 0)
 		{
 			mouse.OnWheelDown(x, y);
+			return 0;
 			
 		}
+		return 0;
 		break;
+		
 	}
 	case WM_INPUT:
 	{
@@ -145,9 +149,11 @@ LRESULT WindowContainer::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM 
 				if (raw->header.dwType == RIM_TYPEMOUSE)
 				{
 					mouse.OnMouseMoveRaw(raw->data.mouse.lLastX, raw->data.mouse.lLastY);
-					
+					return 0;
 				}
+				return 0;
 			}
+			return 0;
 		}
 		return DefWindowProc(hwnd, uMsg, wParam, lParam);
 	}

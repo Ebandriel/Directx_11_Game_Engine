@@ -6,12 +6,12 @@
 class Graphics
 {
 public:
-	bool Initialise(HWND hwnd, int width, int height);
+	bool Initialise(HWND hwnd, float width, float height);
 	void RenderFrame();
 protected:
 
 private:
-	bool InitialiseDirectX(HWND hwnd, int width, int height);
+	bool InitialiseDirectX(HWND hwnd, float width, float height);
 	bool InitialiseShaders();
 	bool InitialiseScene();
 
