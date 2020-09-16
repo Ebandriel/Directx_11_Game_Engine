@@ -16,7 +16,7 @@ void Graphics::RenderFrame()
 	this->deviceContext->IASetInputLayout(this->vertexShader.GetInputLayout());
 	this->deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	this->deviceContext->RSSetState(this->rasterizerState.Get());
-
+	this->deviceContext->OMSetDepthStencilState(this->depthStencilState.Get(), 0);
 	this->deviceContext->VSSetShader(vertexShader.GetShader(), NULL, 0);
 	this->deviceContext->PSSetShader(pixelShader.GetShader(), NULL, 0);
 	UINT stride = sizeof(Vertex);
@@ -196,7 +196,7 @@ bool Graphics::InitialiseShaders()
 
 	D3D11_INPUT_ELEMENT_DESC layout[] =
 	{
-		{"POSITION",0,DXGI_FORMAT::DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA,0 },
+		{"POSITION",0,DXGI_FORMAT::DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA,0 },
 		{"COLOUR" , 0, DXGI_FORMAT::DXGI_FORMAT_R32G32B32_FLOAT,0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_CLASSIFICATION::D3D11_INPUT_PER_VERTEX_DATA,0}
 	};
 
@@ -216,9 +216,9 @@ bool Graphics::InitialiseScene()
 	//Triangle 1 (red)
 	Vertex v[] =
 	{
-		Vertex(-0.5f,-0.5f,1.0f,0.0f,0.0f), // bl
-		Vertex(-0.0f,0.5f,1.0f,0.0f,0.0f),//tm
-		Vertex(0.5f,-0.5f,1.0f,0.0f,0.0f),//br
+		Vertex(-0.5f,-0.5f, 1.0f, 1.0f,0.0f,0.0f), // bl
+		Vertex(-0.0f,0.5f, 1.0f, 1.0f,0.0f,0.0f),//tm
+		Vertex(0.5f, -0.5f,1.0f, 1.0f ,0.0f,0.0f),//br
 		
 	};
 
@@ -245,9 +245,9 @@ bool Graphics::InitialiseScene()
 	//Triangle 2 (green)
 	Vertex v2[] =
 	{
-		Vertex(-0.25f,-0.25f,0.0f,1.0f,0.0f), // bl
-		Vertex(-0.0f,0.25f,0.0f,1.0f,0.0f),//tm
-		Vertex(0.25f,-0.25f,0.0f,1.0f,0.0f),//br
+		Vertex(-0.25f,-0.25f,0.0f,0.0f,1.0f,0.0f), // bl
+		Vertex(-0.0f,0.25f,0.0f,0.0f,1.0f,0.0f),//tm
+		Vertex(0.25f,-0.25f,0.0f,0.0f,1.0f,0.0f),//br
 
 	};
 
