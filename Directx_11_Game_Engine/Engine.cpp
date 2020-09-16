@@ -1,6 +1,6 @@
 #include "Engine.h"
 
-bool Engine::Initialise(HINSTANCE hInstance, std::string window_title, std::string window_class, float width, float height)
+bool Engine::Initialise(HINSTANCE hInstance, std::string window_title, std::string window_class, int width, int height)
 {
     if(!this->render_window.Initialise(this, hInstance, window_title, window_class, width, height)) return false;
     if (!gfx.Initialise(this->render_window.GetHWND(), width, height))return false;

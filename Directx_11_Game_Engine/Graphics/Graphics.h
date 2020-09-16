@@ -6,12 +6,12 @@
 class Graphics
 {
 public:
-	bool Initialise(HWND hwnd, float width, float height);
+	bool Initialise(HWND hwnd, int width, int height);
 	void RenderFrame();
 protected:
 
 private:
-	bool InitialiseDirectX(HWND hwnd, float width, float height);
+	bool InitialiseDirectX(HWND hwnd, int width, int height);
 	bool InitialiseShaders();
 	bool InitialiseScene();
 
@@ -26,5 +26,11 @@ private:
 	PixelShader pixelShader;
 
 	Microsoft::WRL::ComPtr<ID3D11Buffer> vertexBuffer;
+	Microsoft::WRL::ComPtr<ID3D11Buffer> vertexBuffer2;
+
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> depthStencilView;
+	Microsoft::WRL::ComPtr<ID3D11Texture2D> depthStencilBuffer;
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilState;
+
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerState;
 };
